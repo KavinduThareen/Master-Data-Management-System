@@ -5,6 +5,7 @@
 @section("title", "Brands")
 
 @section("content")
+
     <div class="container mt-4">
         <h2 class="text-center mb-4">Brand Form</h2>
 
