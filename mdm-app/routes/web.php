@@ -13,8 +13,36 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// Show login form
+// Public routes
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Protected routes (only authenticated users)
+Route::middleware('auth')->group(function () {
+    Route::get('/dashbord', function () {
+        return view('dashbord');
+    })->name('dashbord');
+});
+
+// Admin routes
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashbord', [AdminController::class, 'index'])->name('admin.dashbord');
+});
+
+
+
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerPost']);
+
+
+
+
+
+
+
+
 
 // Handle login form submission
 Route::post('/login', [AuthController::class, 'authenticate']);
