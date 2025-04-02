@@ -8,9 +8,20 @@
 
         <!-- Success Message -->
         @if(session('success'))
-            <div class="alert alert-success mt-3">
+            <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
                 {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+            <script>
+                // Close the success alert after 1 second
+                setTimeout(function() {
+                    let alertElement = document.querySelector('.alert-success');
+                    if (alertElement) {
+                        alertElement.classList.add('fade');
+                        alertElement.classList.remove('show');
+                    }
+                }, 1000);
+            </script>
         @endif
 
         <!-- Form Start -->
