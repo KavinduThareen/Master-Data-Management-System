@@ -24,3 +24,6 @@ Route::get('/dashbord', [DashbordController::class, 'dashbord']);
 
 Route::get('/brands', [BrandsController::class, 'brands'])->name('brands');
 Route::post('/brands', [BrandsController::class, 'store'])->name('brands.store');
+
+Route::delete('/brands/{brand}', [BrandsController::class, 'destroy'])->name('brands.destroy');
+
