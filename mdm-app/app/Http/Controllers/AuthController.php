@@ -27,6 +27,9 @@ class AuthController extends Controller
         return view('auth.login'); // Blade view for login
     }
 
+
+
+
     // Authenticate user
     public function authenticate(Request $request)
     {
@@ -44,4 +47,7 @@ class AuthController extends Controller
             'email' => 'The provided credentials are incorrect.',
         ]);
     }
+
+
+
 }
