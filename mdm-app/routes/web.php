@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashbordController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,16 @@ Route::get('/dashbord', [DashbordController::class, 'dashbord']);
 
 
 Route::get('/brands', [BrandsController::class, 'brands'])->name('brands');
+
 Route::post('/brands', [BrandsController::class, 'store'])->name('brands.store');
 
 Route::delete('/brands/{brand}', [BrandsController::class, 'destroy'])->name('brands.destroy');
+
+
+
+
+
+Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
