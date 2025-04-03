@@ -362,10 +362,25 @@
                                     <i class="bi bi-box-seam me-2"></i>Items
                                 </a>
                             </li>
+
                         @endif
+
+                        <li class="nav-item mt-4">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger w-100">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                </button>
+                            </form>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
+
+
+
+
 
             <!-- Main Content -->
             <main class="col-md-10 ms-sm-auto px-md-4 py-4">
