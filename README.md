@@ -1,4 +1,3 @@
-<p align="center"><a href="https://yourprojectlink.com" target="_blank"><img src="https://www.example.com/path/to/your-image.jpg" width="400" alt="MDM Logo"></a></p>
 
 
 
