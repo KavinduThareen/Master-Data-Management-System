@@ -7,7 +7,106 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashbordController;
 
 use App\Http\Controllers\ItemController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Route::post('/register', [AuthController::class, 'registerPost']);
+Route::post('/login', [AuthController::class, 'login']);
+
+//Route::post('/login', [AuthController::class, 'authenticate']);  // Duplicate
+
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/refresh', [AuthController::class, 'refresh']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/me', [AuthController::class, 'me']);
+});
+
+
+Route::middleware('auth:api')->get('/dashboard', function () {
+    return response()->json(['message' => 'Welcome to your dashboard!']);
+});
+
+Route::get('/login', function () {
+    return view('auth.login'); // Show login form
+})->name('login');
+
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/me', [AuthController::class, 'me']);
+});
+
+Route::middleware('auth:api')->get('/dashbord', function (Request $request) {
+    return response()->json([
+        'message' => 'Welcome to your dashboard!',
+        'user' => $request->user()
+    ]);
+});
+
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin-panel', function () {
+        // Admin panel content
+        return view('admin.dashbord');
+    })->middleware('is_admin');
+});
+
+
+//Route::middleware('auth')->group(function () {
+//    Route::get('/dashboard', function () {
+//        // User dashboard content
+//        return view('user.dashbord');
+//    });
+//});
+
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+
+//
+//Route::middleware(['auth', 'admin'])->group(function () {
+//    Route::get('/admin/dashboard', [AuthController::class, 'index'])->name('admin.dashboard');
+//});
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -16,34 +115,23 @@ use Illuminate\Support\Facades\Route;
 // Public routes
 
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Protected routes (only authenticated users)
-Route::middleware('auth')->group(function () {
-    Route::get('/dashbord', function () {
-        return view('dashbord');
-    })->name('dashbord');
-});
+//Route::get('/login', [AuthController::class, 'login'])->name('login');
 
 
-
-
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'registerPost']);
-
-
-
-
-
-
+//
+//Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+//uncomment
 
 
 
 // Handle login form submission
-Route::post('/login', [AuthController::class, 'authenticate']);
+
+//Route::post('/login', [AuthController::class, 'authenticate']);
+
+
+
+
 
 Route::get('/dashbord', [DashbordController::class, 'dashbord']);
 
