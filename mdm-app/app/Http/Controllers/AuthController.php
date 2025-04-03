@@ -1,60 +1,4 @@
 <?php
-//
-//namespace App\Http\Controllers;
-//
-//use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Auth;
-//
-//class AuthController extends Controller
-//{
-//    // Show the login form
-//    public function login()
-//    {
-//        return view('auth.login');
-//    }
-//
-//    // Handle login attempt
-//    public function loginPost(Request $request)
-//    {
-//        $request->validate([
-//            'email' => 'required|email',
-//            'password' => 'required',
-//        ]);
-//
-//        if (Auth::attempt($request->only('email', 'password'))) {
-//            $user = Auth::user();
-//
-//            if ($user->is_admin) {
-//                return redirect()->route('admin.dashbord');
-//            }
-//            return redirect()->route('dashbord');
-//        }
-//
-//        return back()->withErrors(['email' => 'Invalid credentials']);
-//    }
-//
-//    // Logout
-//    public function logout()
-//    {
-//        Auth::logout();
-//        return redirect('/login');
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 namespace App\Http\Controllers;
 
@@ -63,8 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthController extends Controller
 {
+
+
     // Show the login form
     public function login()
     {
@@ -96,6 +43,10 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
+
+
+
+
 
 
 
@@ -133,4 +84,6 @@ class AuthController extends Controller
         return redirect('/login');
     }
 }
+
+
 

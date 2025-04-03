@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashbordController extends Controller
+class DashbordController
 {
     public function dashbord()
     {

@@ -3,17 +3,19 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CategoryController;
+
 use App\Http\Controllers\DashbordController;
+
 use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 
 
-//Route::get('/', [AuthController::class, 'login']);
-
 
 
 // Public routes
+
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
@@ -26,10 +28,6 @@ Route::middleware('auth')->group(function () {
     })->name('dashbord');
 });
 
-// Admin routes
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashbord', [AdminController::class, 'index'])->name('admin.dashbord');
-});
 
 
 

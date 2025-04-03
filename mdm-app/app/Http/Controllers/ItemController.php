@@ -7,7 +7,9 @@ use App\Models\Item;
 use App\Models\Brand;
 use App\Models\Category;
 
+
 class ItemController extends Controller
+
 {
     public function items()
     {
