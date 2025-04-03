@@ -29,189 +29,170 @@ Follow the steps below to set up the Master Data Management System locally:
    ```bash
    git clone https://github.com/yourusername/mdm.git
    cd mdm
-Install Dependencies: Ensure you have Composer and Node.js installed. Run the following command to install the PHP dependencies:
+2.Install Dependencies: Ensure you have Composer and Node.js installed. Run the following command to install the PHP dependencies:
+*composer install
 
-bash
-Copy
-Edit
-composer install
-Set Up Environment Variables: Copy the .env.example file to .env and configure the database connection:
+3.Set Up Environment Variables: Copy the .env.example file to .env and configure the database connection:
+*cp .env.example .env
 
-bash
-Copy
-Edit
-cp .env.example .env
 In the .env file, set the DB_DATABASE, DB_USERNAME, and DB_PASSWORD to your MySQL credentials:
 
-env
-Copy
-Edit
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=mdm_db
 DB_USERNAME=root
 DB_PASSWORD=yourpassword
-Generate Application Key: Run the following command to generate an application key:
 
-bash
-Copy
-Edit
-php artisan key:generate
-Run Migrations: Apply the database migrations:
+4.Generate Application Key: Run the following command to generate an application key:
+*php artisan key:generate
 
-bash
-Copy
-Edit
-php artisan migrate
-Install Frontend Dependencies: Run the following command to install the necessary frontend dependencies:
+5.Run Migrations: Apply the database migrations:
+*php artisan migrate
 
-bash
-Copy
-Edit
-npm install
-Run the Application: Finally, start the development server:
+6.Install Frontend Dependencies: Run the following command to install the necessary frontend dependencies:
+*npm install
 
-bash
-Copy
-Edit
-php artisan serve
-The application will be available at http://localhost:8000.
+7.Run the Application: Finally, start the development server:
+*php artisan serve
 
-Database Design
+8.The application will be available at http://localhost:8000.
+
+# Database Design
 The application uses the following tables:
 
 Users Table:
-id: Primary key
+*id: Primary key
 
-name: User's full name
+*name: User's full name
 
-email: User's email address
+*email: User's email address
 
-password: Hashed password
+*password: Hashed password
 
-created_at: Timestamp
+*created_at: Timestamp
 
-updated_at: Timestamp
+*updated_at: Timestamp
 
-is_admin: Boolean to distinguish admin users
+*is_admin: Boolean to distinguish admin users
 
 Master Brand Table:
-id: Primary key
 
-code: Unique brand code
+*id: Primary key
 
-name: Brand name
+*code: Unique brand code
 
-status: Active/Inactive
+*name: Brand name
 
-created_at: Timestamp
+*status: Active/Inactive
 
-updated_at: Timestamp
+*created_at: Timestamp
+
+*updated_at: Timestamp
 
 Master Category Table:
-id: Primary key
 
-code: Unique category code
+*id: Primary key
 
-name: Category name
+*code: Unique category code
 
-status: Active/Inactive
+*name: Category name
 
-created_at: Timestamp
+*status: Active/Inactive
 
-updated_at: Timestamp
+*created_at: Timestamp
+
+*updated_at: Timestamp
 
 Master Item Table:
-id: Primary key
 
-brand_id: Foreign key referencing master_brands
+*id: Primary key
 
-category_id: Foreign key referencing master_categories
+*brand_id: Foreign key referencing master_brands
 
-code: Unique item code
+*category_id: Foreign key referencing master_categories
 
-name: Item name
+*code: Unique item code
 
-attachment: File attachment (optional)
+*name: Item name
 
-status: Active/Inactive
+*attachment: File attachment (optional)
 
-created_at: Timestamp
+*status: Active/Inactive
 
-updated_at: Timestamp
+*created_at: Timestamp
 
-Features to Implement
+*updated_at: Timestamp
+
+#Features to Implement
+
 User Authentication
-Only authenticated users can access the system.
+*Only authenticated users can access the system.
 
-Users can register, log in, and log out using Laravel's built-in authentication features.
+*Users can register, log in, and log out using Laravel's built-in authentication features.
 
-Admin users can manage tasks for all users.
+*Admin users can manage tasks for all users.
 
-Master Data Management
-Create Brands: Authenticated users can create new brands with a code, name, and status (Active by default).
+#Master Data Management
+*Create Brands: Authenticated users can create new brands with a code, name, and status (Active by default).
 
-View Brands: Display a paginated list of brands created by the logged-in user (5 per page).
+*View Brands: Display a paginated list of brands created by the logged-in user (5 per page).
 
-Update Brands: Users can edit the code and name of their brands.
+*Update Brands: Users can edit the code and name of their brands.
 
-Delete Brands: Users can delete a brand, with confirmation via modal or alert.
+*Delete Brands: Users can delete a brand, with confirmation via modal or alert.
 
-Create Categories: Users can create new categories with a code, name, and status (Active by default).
+*Create Categories: Users can create new categories with a code, name, and status (Active by default).
 
-View Categories: Display a paginated list of categories created by the logged-in user (5 per page).
+*View Categories: Display a paginated list of categories created by the logged-in user (5 per page).
 
-Update Categories: Users can edit the code and name of their categories.
+*Update Categories: Users can edit the code and name of their categories.
 
-Delete Categories: Users can delete a category with confirmation via modal or alert.
+*Delete Categories: Users can delete a category with confirmation via modal or alert.
 
-Create Items: Users can create new items with a brand, category, code, name, and status (Active by default).
+*Create Items: Users can create new items with a brand, category, code, name, and status (Active by default).
 
-View Items: Display a paginated list of items created by the logged-in user (5 per page).
+*View Items: Display a paginated list of items created by the logged-in user (5 per page).
 
-Update Items: Users can edit the code, name, brand, category, and upload an attachment for their items.
+*Update Items: Users can edit the code, name, brand, category, and upload an attachment for their items.
 
-Delete Items: Users can delete an item, with confirmation via modal or alert.
+*Delete Items: Users can delete an item, with confirmation via modal or alert.
 
-Role-Based Access Control
-Add is_admin column to the users table for role differentiation.
+#Role-Based Access Control
+*Add is_admin column to the users table for role differentiation.
 
-Admin users can manage all tasks, while regular users can only manage their own data.
+*Admin users can manage all tasks, while regular users can only manage their own data.
 
-Validation
-Input fields are validated for required fields and character limits.
+#Validation
+*Input fields are validated for required fields and character limits.
 
-Error messages are displayed when validation fails.
+*Error messages are displayed when validation fails.
 
-Advanced Features (Optional)
-Search and Filters: Users can search items by code, name, or status.
+#Advanced Features (Optional)
+*Search and Filters: Users can search items by code, name, or status.
 
-Export Tasks: Users can export item data to CSV, Excel, or PDF files.
+*Export Tasks: Users can export item data to CSV, Excel, or PDF files.
 
-Technologies Used
-Backend: Laravel (PHP)
+#Technologies Used
+*Backend: Laravel (PHP)
 
-Frontend: Blade templates, Bootstrap or Tailwind CSS
+*Frontend: Blade templates, Bootstrap or Tailwind CSS
 
-Database: MySQL
+*Database: MySQL
 
-Authentication: Laravel Breeze or Laravel UI
+*Authentication: Laravel Breeze or Laravel UI
 
-Frontend Build Tools: npm, Laravel Mix
+*Frontend Build Tools: npm, Laravel Mix
 
-Usage
-Login: After registration, users can log in to the system to manage brands, categories, and items.
+#Usage
+*Login: After registration, users can log in to the system to manage brands, categories, and items.
 
-Create and Manage Data: Navigate to the respective pages for creating, updating, or deleting brands, categories, and items.
+*Create and Manage Data: Navigate to the respective pages for creating, updating, or deleting brands, categories, and items.
 
-Admin Access: Admin users can manage all tasks and users within the application.
+*Admin Access: Admin users can manage all tasks and users within the application.
 
 License
 This project is open-source and available under the MIT License. See the LICENSE file for more details.
 
-pgsql
-Copy
-Edit
 
-This is a markdown file for your Master Data Management System (MDM), formatted for easy copying and pasting into your `README.md`.
