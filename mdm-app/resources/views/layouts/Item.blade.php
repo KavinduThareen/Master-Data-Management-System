@@ -4,6 +4,15 @@
 
 @section('content')
     <div class="container mt-4">
+
+
+        <!-- Back to Dashboard Button -->
+        <div class="mb-3">
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+        </div>
+
         <h2 class="text-center mb-4">Item Form</h2>
 
         <!-- Success Message -->

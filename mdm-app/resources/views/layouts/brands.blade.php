@@ -1,3 +1,4 @@
+
 @extends('layouts.default')
 
 @section("title", "Brands")
@@ -36,21 +37,6 @@
             padding: 2rem;
         }
 
-        /* Form Styling */
-        .form-control {
-            border-radius: 10px;
-            border: 1px solid #ced4da;
-            padding: 12px;
-            transition: all 0.3s ease;
-        }
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 10px rgba(0,123,255,0.2);
-        }
-        .form-group label {
-            font-weight: 600;
-        }
-
         /* Button Styling */
         .btn {
             border-radius: 8px;
@@ -63,45 +49,27 @@
             background: linear-gradient(135deg, #007bff, #0056b3);
             border: none;
         }
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #0056b3, #003f80);
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            border: none;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
             transform: translateY(-2px);
-        }
-        .btn-warning {
-            background: linear-gradient(135deg, #ffc107, #ff9800);
-            border: none;
-        }
-        .btn-danger {
-            background: linear-gradient(135deg, #ff6b6b, #ff4757);
-            border: none;
-        }
-        .btn-sm {
-            padding: 0.5rem 1rem;
-        }
-
-        /* Table Styling */
-        .table {
-            border-radius: 12px;
-            overflow: hidden;
-            background: #fff;
-        }
-        .table thead {
-            background: #007bff;
-            color: #fff;
-        }
-        .table tbody tr:nth-child(odd) {
-            background: #f9fbfd;
-        }
-        .table tbody tr:hover {
-            background: #eef3f9;
-        }
-        .table td, .table th {
-            padding: 1rem;
-            vertical-align: middle;
         }
     </style>
 
     <div class="container mt-4">
+
+        <!-- Back to Dashboard Button -->
+        <!-- Back to Dashboard Button -->
+        <div class="mb-3">
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+        </div>
+
+
+
         <h2 class="text-center mb-4">Manage Brands</h2>
 
         <!-- Success Message -->
@@ -117,18 +85,18 @@
             <div class="card-body">
                 <form action="{{ route('brands.store') }}" method="POST">
                     @csrf
-                    <div class="form-group mb-3">
-                        <label for="code">Brand Code</label>
+                    <div class="mb-3">
+                        <label for="code" class="form-label">Brand Code</label>
                         <input type="text" class="form-control" id="code" name="code" placeholder="Enter brand code" required>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="name">Brand Name</label>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Brand Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter brand name" required>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="status">Status</label>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
                         <select class="form-control" id="status" name="status">
                             <option value="Active" selected>Active</option>
                             <option value="Inactive">Inactive</option>
@@ -138,6 +106,9 @@
                     <button type="submit" class="btn btn-primary mt-3">
                         <i class="bi bi-save me-1"></i> Save Brand
                     </button>
+
+
+
                 </form>
             </div>
         </div>
@@ -164,9 +135,9 @@
                         <td>{{ $brand->code }}</td>
                         <td>{{ $brand->name }}</td>
                         <td>
-                                <span class="badge bg-{{ $brand->status == 'Active' ? 'success' : 'danger' }}">
-                                    {{ $brand->status }}
-                                </span>
+                            <span class="badge bg-{{ $brand->status == 'Active' ? 'success' : 'danger' }}">
+                                {{ $brand->status }}
+                            </span>
                         </td>
                         <td>
                             <a href="#" class="btn btn-warning btn-sm">
@@ -187,3 +158,5 @@
         </div>
     </div>
 @endsection
+
+

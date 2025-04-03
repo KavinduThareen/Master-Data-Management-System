@@ -45,5 +45,31 @@ class BrandsController extends Controller
     }
 
 
+
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'code' => 'required|unique:brands,code,' . $id,
+            'name' => 'required',
+            'status' => 'required|in:Active,Inactive',
+        ]);
+
+        $brand = Brand::findOrFail($id);
+        $brand->update([
+            'code' => $request->code,
+            'name' => $request->name,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('brands')->with('success', 'Brand updated successfully!');
+    }
+
+
+
+
+
+
 }
 

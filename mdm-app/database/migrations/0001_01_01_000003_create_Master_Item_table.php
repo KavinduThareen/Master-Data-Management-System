@@ -87,7 +87,6 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::dropIfExists('items'); // Fixed incorrect table name
-//        Schema::dropIfExists('job_batches');
-//        Schema::dropIfExists('failed_jobs');
+
     }
 };

@@ -120,10 +120,15 @@
       <excludeFolder url="file://$MODULE_DIR$/mdm-app/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/mdm-app/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/mdm-app/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/mdm-app/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/mdm-app/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/mdm-app/vendor/stella-maris/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/mdm-app/vendor/tymon/jwt-auth" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="bootstrap-icons" level="application" />
+    <orderEntry type="library" name="axios" level="application" />
   </component>
 </module>

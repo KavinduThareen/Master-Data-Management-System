@@ -11,23 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+Route::post('/', [AuthController::class, 'login']);
 
-
-
-
-
-
-
-
-
-
-
-
-
-//Route::post('/register', [AuthController::class, 'registerPost']);
-Route::post('/login', [AuthController::class, 'login']);
-
-//Route::post('/login', [AuthController::class, 'authenticate']);  // Duplicate
 
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::post('/refresh', [AuthController::class, 'refresh']);
@@ -41,7 +26,7 @@ Route::middleware('auth:api')->get('/dashboard', function () {
     return response()->json(['message' => 'Welcome to your dashboard!']);
 });
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('auth.login'); // Show login form
 })->name('login');
 
@@ -58,8 +43,6 @@ Route::middleware('auth:api')->get('/dashbord', function (Request $request) {
 });
 
 
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/admin-panel', function () {
         // Admin panel content
@@ -68,78 +51,27 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//Route::middleware('auth')->group(function () {
-//    Route::get('/dashboard', function () {
-//        // User dashboard content
-//        return view('user.dashbord');
-//    });
-//});
-
-
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-
-//
-//Route::middleware(['auth', 'admin'])->group(function () {
-//    Route::get('/admin/dashboard', [AuthController::class, 'index'])->name('admin.dashboard');
-//});
-//
-
-
-
-
-
-
-
+Route::get('/dashboard', [DashbordController::class, 'dashbord'])->name('dashboard');
 
 
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/login');
+    return redirect('/');
 })->name('logout');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Public routes
-
-
-//Route::get('/login', [AuthController::class, 'login'])->name('login');
-
-
-//
-//Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
-//uncomment
-
-
-
-// Handle login form submission
-
-//Route::post('/login', [AuthController::class, 'authenticate']);
-
-
-
-
 
 Route::get('/dashbord', [DashbordController::class, 'dashbord']);
 
-//Route::match(['get', 'post'], '/brands', [BrandsController::class, 'brands'])->name('brands');
+
+
+
+
 
 
 Route::get('/brands', [BrandsController::class, 'brands'])->name('brands');
@@ -147,6 +79,9 @@ Route::get('/brands', [BrandsController::class, 'brands'])->name('brands');
 Route::post('/brands', [BrandsController::class, 'store'])->name('brands.store');
 
 Route::delete('/brands/{brand}', [BrandsController::class, 'destroy'])->name('brands.destroy');
+
+//Route::patch('/brands/{id}', [BrandsController::class, 'update'])->name('brands.update');
+
 
 
 
@@ -157,7 +92,6 @@ Route::get('/categories', [CategoryController::class, 'categories'])->name('cate
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
-
 
 
 
