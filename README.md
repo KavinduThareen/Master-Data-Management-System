@@ -74,8 +74,3 @@ The **Master Data Management System** is open-source software licensed under the
 
 ---
 
-## Contact
-
-For any inquiries or support regarding the **Master Data Management System**, feel free to reach out to us via email at [support@yourcompany.com](mailto:support@yourcompany.com).
-
-We hope this tool helps you streamline your data management process, and we welcome any feedback or suggestions to improve it further.
