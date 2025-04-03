@@ -1,6 +1,5 @@
 
 <p align="center">
-<a href="https://github.com/yourusername/mdm/actions"><img src="https://github.com/yourusername/mdm/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/yourusername/mdm"><img src="https://img.shields.io/packagist/dt/yourusername/mdm" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/yourusername/mdm"><img src="https://img.shields.io/packagist/v/yourusername/mdm" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/yourusername/mdm"><img src="https://img.shields.io/packagist/l/yourusername/mdm" alt="License"></a>
